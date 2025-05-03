@@ -48,9 +48,9 @@ public class RobotContainer {
 
     // Configure the trigger bindings
     swerveDriveSubsystem.setDefaultCommand(swerveDriveSubsystem.driveCommand(
-        () -> -MathUtil.applyDeadband(xboxController_HID.getRawAxis(1), 0.1),
-        () -> -MathUtil.applyDeadband(xboxController_HID.getRawAxis(0), 0.1),
-        () -> -MathUtil.applyDeadband(xboxController_HID.getRawAxis(4), 0.1)));
+        () -> -MathUtil.applyDeadband(m_driverController.getRawAxis(1), 0.1),
+        () -> -MathUtil.applyDeadband(m_driverController.getRawAxis(0), 0.1),
+        () -> -MathUtil.applyDeadband(m_driverController.getRawAxis(4), 0.1)));
 
     configureBindings();
 
