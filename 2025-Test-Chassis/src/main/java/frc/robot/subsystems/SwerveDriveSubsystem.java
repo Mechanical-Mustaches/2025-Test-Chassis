@@ -66,6 +66,7 @@ public class SwerveDriveSubsystem extends SubsystemBase {
    * @param directory Directory of swerve drive config files.
    */
   public SwerveDriveSubsystem(File directory) {
+
     boolean blueAlliance = false;
     Pose2d startingPose = blueAlliance ? new Pose2d(new Translation2d(Meter.of(1),
         Meter.of(4)),
@@ -82,6 +83,7 @@ public class SwerveDriveSubsystem extends SubsystemBase {
       // files.
       // swerveDrive = new SwerveParser(directory).createSwerveDrive(maximumSpeed,
       // angleConversionFactor, driveConversionFactor);
+
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
@@ -115,15 +117,19 @@ public class SwerveDriveSubsystem extends SubsystemBase {
         Constants.MAX_SPEED,
         new Pose2d(new Translation2d(Meter.of(2), Meter.of(0)),
             Rotation2d.fromDegrees(0)));
+    swerveDrive.setMotorIdleMode(false);
   }
 
   @Override
   public void periodic() {
 
+<<<<<<< Updated upstream
   }
 
   @Override
   public void simulationPeriodic() {
+=======
+>>>>>>> Stashed changes
   }
 
   /**

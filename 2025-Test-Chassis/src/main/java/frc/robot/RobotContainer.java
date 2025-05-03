@@ -11,11 +11,7 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.SwerveDriveSubsystem;
 
 import java.io.File;
-import java.nio.file.FileSystem;
 import edu.wpi.first.wpilibj.Filesystem;
-
-import javax.security.auth.kerberos.DelegationPermission;
-
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -48,9 +44,9 @@ public class RobotContainer {
 
     // Configure the trigger bindings
     swerveDriveSubsystem.setDefaultCommand(swerveDriveSubsystem.driveCommand(
-        () -> -MathUtil.applyDeadband(m_driverController.getRawAxis(1), 0.1),
-        () -> -MathUtil.applyDeadband(m_driverController.getRawAxis(0), 0.1),
-        () -> -MathUtil.applyDeadband(m_driverController.getRawAxis(4), 0.1)));
+        () -> -MathUtil.applyDeadband(xboxController_HID.getRawAxis(1), 0.1),
+        () -> -MathUtil.applyDeadband(xboxController_HID.getRawAxis(0), 0.1),
+        () -> -MathUtil.applyDeadband(xboxController_HID.getRawAxis(4), 0.1)));
 
     configureBindings();
 
