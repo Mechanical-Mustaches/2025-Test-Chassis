@@ -9,6 +9,7 @@ import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.SpinnyBoxSubsystem;
 import frc.robot.subsystems.SwerveDriveSubsystem;
 
 import java.io.File;
@@ -38,6 +39,7 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
   private final ClimberSubsystem climberSubsystem = new ClimberSubsystem();
+  private final SpinnyBoxSubsystem spinnyBoxSubsystem = new SpinnyBoxSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController = new CommandXboxController(
@@ -88,20 +90,24 @@ public class RobotContainer {
     m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
 
     m_gunnerController.button(5).whileTrue(
-      new InstantCommand(() -> climberSubsystem.climb()));
+        new InstantCommand(() -> climberSubsystem.climb()));
     m_gunnerController.button(5).onFalse(
-      new InstantCommand(() -> climberSubsystem.stopClimb()));
+        new InstantCommand(() -> climberSubsystem.stopClimb()));
     m_gunnerController.button(9).whileTrue(
-      new InstantCommand(() -> climberSubsystem.unclimb()));
+        new InstantCommand(() -> climberSubsystem.unclimb()));
     m_gunnerController.button(9).onFalse(
-      new InstantCommand(() -> climberSubsystem.stopClimb()));
+        new InstantCommand(() -> climberSubsystem.stopClimb()));
 
-
+    m_gunnerController.button(6).whileTrue(
+        new InstantCommand(() -> spinnyBoxSubsystem.spin()));
+    m_gunnerController.button(6).onFalse(
+        new InstantCommand(() -> spinnyBoxSubsystem.stopSpin()));
+    m_gunnerController.button(10).whileTrue(
+        new InstantCommand(() -> spinnyBoxSubsystem.spinOut()));
+    m_gunnerController.button(10).onFalse(
+        new InstantCommand(() -> spinnyBoxSubsystem.stopSpin()));
 
   }
-
-   
-
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
